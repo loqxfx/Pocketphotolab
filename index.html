@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111318">
+  <title>PocketPhotoLab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="PocketPhotoLab home">
+      <span class="brand-mark">P</span>
+      <span>Pocket<span class="brand-light">PhotoLab</span></span>
+    </a>
+    <div class="top-actions">
+      <button id="compareBtn" class="button button-quiet" disabled>Hold to compare</button>
+      <button id="resetBtn" class="button button-quiet" disabled>Reset</button>
+      <button id="downloadBtn" class="button button-primary" disabled>Export photo</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="preview-column">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR DARKROOM, ANYWHERE</p>
+          <h1>Make it <span>yours.</span></h1>
+        </div>
+        <span id="imageStatus" class="status">No image loaded</span>
+      </div>
+
+      <div id="dropZone" class="preview-frame">
+        <div id="emptyState" class="empty-state">
+          <div class="upload-icon">↥</div>
+          <h2>Bring a photo to life</h2>
+          <p>Drop an image here, or choose one from your device.</p>
+          <label class="button button-primary upload-label" for="fileInput">Choose a photo</label>
+          <span class="file-note">JPG, PNG or WebP · processed on your device</span>
+        </div>
+        <canvas id="photoCanvas" aria-label="Edited photo preview" hidden></canvas>
+      </div>
+
+      <div class="preview-footer">
+        <label class="button button-secondary upload-label" for="fileInput">Open another photo</label>
+        <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
+        <div class="footer-note"><span class="privacy-dot"></span> Your photos stay on your device</div>
+      </div>
+    </section>
+
+    <aside class="tools-panel">
+      <div class="panel-title">
+        <div>
+          <p class="eyebrow">IMAGE WORKSPACE</p>
+          <h2>Adjustments</h2>
+        </div>
+        <span class="sliders-symbol">☷</span>
+      </div>
+
+      <div class="tool-group">
+        <div class="group-heading"><span>LIGHT</span><span class="group-line"></span></div>
+        <div class="control">
+          <div class="control-label"><label for="exposure">Exposure</label><output id="exposureValue">0</output></div>
+          <input id="exposure" data-unit=" EV" type="range" min="-100" max="100" value="0">
+        </div>
+        <div class="control">
+          <div class="control-label"><label for="contrast">Contrast</label><output id="contrastValue">0</output></div>
+          <input id="contrast" type="range" min="-100" max="100" value="0">
+        </div>
+        <div class="control">
+          <div class="control-label"><label for="highlights">Highlights</label><output id="highlightsValue">0</output></div>
+          <input id="highlights" type="range" min="-100" max="100" value="0">
+        </div>
+        <div class="control">
+          <div class="control-label"><label for="shadows">Shadows</label><output id="shadowsValue">0</output></div>
+          <input id="shadows" type="range" min="-100" max="100" value="0">
+        </div>
+      </div>
+
+      <div class="tool-group">
+        <div class="group-heading"><span>COLOR</span><span class="group-line"></span></div>
+        <div class="control">
+          <div class="control-label"><label for="temperature">Temperature</label><output id="temperatureValue">0</output></div>
+          <input id="temperature" type="range" min="-100" max="100" value="0">
+        </div>
+        <div class="control">
+          <div class="control-label"><label for="saturation">Saturation</label><output id="saturationValue">0</output></div>
+          <input id="saturation" type="range" min="-100" max="100" value="0">
+        </div>
+        <div class="control">
+          <div class="control-label"><label for="vibrance">Vibrance</label><output id="vibranceValue">0</output></div>
+          <input id="vibrance" type="range" min="-100" max="100" value="0">
+        </div>
+      </div>
+
+      <div class="tool-group">
+        <div class="group-heading"><span>TRANSFORM</span><span class="group-line"></span></div>
+        <div class="transform-actions">
+          <button id="rotateLeft" class="button button-secondary" disabled>↶ Rotate left</button>
+          <button id="rotateRight" class="button button-secondary" disabled>↷ Rotate right</button>
+        </div>
+      </div>
+      <p class="panel-footnote">A simple first release. More tools can be added as the project grows.</p>
+    </aside>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
